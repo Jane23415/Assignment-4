@@ -13,6 +13,7 @@ class UserProfile extends Component {
           {/* <Link to="/userProfile">User Profile</Link> */}
           <Link to="./Login"> Log In</Link>
           <Link to="./Debits"> Debits</Link>
+          <Link to="./Credits"> Credits</Link>
           
           <div>Username: {this.props.userName}</div>
           <div>Member Since: {this.props.memberSince}</div>
