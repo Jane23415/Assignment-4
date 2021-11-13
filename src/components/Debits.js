@@ -18,6 +18,7 @@ const Debits = (props) => {
             <Link to="/userProfile">User Profile</Link>
             <Link to="./Login"> Log In</Link>
             <Link to="/">Home</Link>
+            <Link to="./Credits"> Credits</Link>
         </div>
 
     )

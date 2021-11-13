@@ -7,6 +7,7 @@ import UserProfile from './components/UserProfile';
 import LogIn from './Login';
 import './App.css';
 import Debits from './components/Debits'
+import Credits from './components/Credits'
 
 
 import axios from "axios";
@@ -62,11 +63,16 @@ class App extends Component {
     //to be implemented
   }
 
+  addCredit = (e) => {
+    //to be implemented
+  }
+
 
 
 
   render() {
     const { debits } = this.state
+    const { credits } = this.state
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
@@ -74,6 +80,7 @@ class App extends Component {
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
     
     const DebitsComponent = () => (<Debits addDebit = {this.addDebit} debits = {debits} />)
+    const CreditsComponent = () => (<Credits addCredit = {this.addCredit} credits = {credits} />)
     return (
         <Router>
           <div>
@@ -81,6 +88,7 @@ class App extends Component {
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
             <Route exact path="/debits" render={DebitsComponent}/>
+            <Route exact path="/credits" render={CreditsComponent}/>
           </div>
         </Router>
     );
