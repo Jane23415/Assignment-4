@@ -6,6 +6,7 @@ import Home from './components/home';
 import UserProfile from './components/UserProfile';
 import LogIn from './Login';
 import './App.css';
+import Debits from './components/Debits'
 
 
 import axios from "axios";
@@ -57,20 +58,29 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
   
+  addDebit = (e) => {
+    //to be implemented
+  }
+
+
+
+
   render() {
-    
+    const { debits } = this.state
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
     );
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
-
+    
+    const DebitsComponent = () => (<Debits addDebit = {this.addDebit} debits = {debits} />)
     return (
         <Router>
           <div>
             <Route exact path="/" render={HomeComponent}/>
             <Route exact path="/userProfile" render={UserProfileComponent}/>
             <Route exact path="/login" render={LogInComponent}/>
+            <Route exact path="/debits" render={DebitsComponent}/>
           </div>
         </Router>
     );
