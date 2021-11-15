@@ -15,6 +15,14 @@ const Debits = (props) => {
             <h1>Debits</h1>
             {showDebits()}
 
+            <form onSubmit = {props.addDebit}>
+                <label htmlFor="description">Description</label>
+                <input type="text" name="description" />
+                <label htmlFor="amount">Amount</label>
+                <input type="number" name="amount" />
+                <button type="submit">Add Debit</button>
+            </form>
+
             <Link to="/userProfile">User Profile</Link>
             <Link to="./Login"> Log In</Link>
             <Link to="/">Home</Link>
