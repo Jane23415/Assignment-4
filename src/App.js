@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Home from './components/home';
 import UserProfile from './components/UserProfile';
-import LogIn from './Login';
+import LogIn from './components/Login';
 import './App.css';
 import Debits from './components/Debits'
 import Credits from './components/Credits'
@@ -64,15 +64,29 @@ class App extends Component {
   }
 
   addCredit = (e) => {
-    //to be implemented
+    //send to debits view via props
+    //updates state based off user input
+    e.preventDefault();
+    const description = e.target[0].value;
+    const amount = Number(e.target[1].value);
+    
+    // get date 
+    const curr_date = new Date();
+    let date = curr_date.getFullYear() + "-" + curr_date.getMonth() + "-" + curr_date.getDate();
+
+    const credit_obj = {'description':description, 'amount':amount, 'date':date};
+    console.log(description, amount);
+
+    this.setState({
+      credits: [...this.state.credits, credit_obj]
+    })
+
+    console.log(this.state.credits)
   }
-
-
-
 
   render() {
     const { debits } = this.state
-    const { credits } = this.state
+    //const { credits } = this.state
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
@@ -80,7 +94,7 @@ class App extends Component {
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
     
     const DebitsComponent = () => (<Debits addDebit = {this.addDebit} debits = {debits} />)
-    const CreditsComponent = () => (<Credits addCredit = {this.addCredit} credits = {credits} />)
+    const CreditsComponent = () => (<Credits addCredit = {this.addCredit} credits = {this.state.credits} />)
     return (
         <Router>
           <div>
