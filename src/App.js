@@ -60,7 +60,24 @@ class App extends Component {
   }
   
   addDebit = (e) => {
-    //to be implemented
+    //send to debits view via props
+    //updates state based off user input
+    e.preventDefault();
+    const description = e.target[0].value;
+    const amount = Number(e.target[1].value);
+    
+    // get date 
+    const curr_date = new Date();
+    let date = curr_date.getFullYear() + "-" + curr_date.getMonth() + "-" + curr_date.getDate();
+
+    const debit_obj = {'description':description, 'amount':amount, 'date':date};
+    console.log(description, amount);
+
+    this.setState({
+      debits: [...this.state.debits, debit_obj]
+    })
+
+    console.log(this.state.debits)
   }
 
   addCredit = (e) => {
@@ -86,7 +103,7 @@ class App extends Component {
 
   render() {
     const { debits } = this.state
-    //const { credits } = this.state
+    const { credits } = this.state
     const HomeComponent = () => (<Home accountBalance={this.state.accountBalance}/>);
     const UserProfileComponent = () => (
         <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince}  />
@@ -94,7 +111,7 @@ class App extends Component {
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />);
     
     const DebitsComponent = () => (<Debits addDebit = {this.addDebit} debits = {debits} />)
-    const CreditsComponent = () => (<Credits addCredit = {this.addCredit} credits = {this.state.credits} />)
+    const CreditsComponent = () => (<Credits addCredit = {this.addCredit} credits = {credits} />)
     return (
         <Router>
           <div>
