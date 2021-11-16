@@ -23,12 +23,16 @@ const Debits = (props) => {
                 <button type="submit">Add Debit</button>
             </form>
 
+            <div>
+                Account Balance:
+            </div>
+
             <Link to="/userProfile">User Profile</Link>
             <Link to="./Login"> Log In</Link>
             <Link to="/">Home</Link>
             <Link to="./Credits"> Credits</Link>
         </div>
-
     )
 }
+
 export default Debits
