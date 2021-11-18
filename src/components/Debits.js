@@ -1,4 +1,5 @@
 import React from 'react';
+import AccountBalance from './AccountBalance';
 import {Link} from 'react-router-dom';
 
 const Debits = (props) => {
@@ -13,6 +14,12 @@ const Debits = (props) => {
     return (
         <div>
             <h1>Debits</h1>
+
+            <Link to="/userProfile">User Profile</Link>
+            <Link to="./Login"> Log In</Link>
+            <Link to="/">Home</Link>
+            <Link to="./Credits"> Credits</Link>
+
             {showDebits()}
 
             <form onSubmit = {props.addDebit}>
@@ -23,14 +30,7 @@ const Debits = (props) => {
                 <button type="submit">Add Debit</button>
             </form>
 
-            <div>
-                Account Balance:
-            </div>
-
-            <Link to="/userProfile">User Profile</Link>
-            <Link to="./Login"> Log In</Link>
-            <Link to="/">Home</Link>
-            <Link to="./Credits"> Credits</Link>
+            <AccountBalance accountBalance={props.accountBalance}/>
         </div>
     )
 }
