@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     return (
         <div>
-          <img src="https://letstalkpayments.com/wp-content/uploads/2016/04/Bank.png" alt="bank"/>
+          <img src="https://thefinanser.com/wp-content/uploads/2021/09/bank.jpeg" alt="bank"/>
           <h1>Bank of React</h1>
 
           <Link to="/userProfile">User Profile</Link>
