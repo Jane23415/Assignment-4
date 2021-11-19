@@ -19,7 +19,7 @@ class App extends Component {
     this.state = {
       accountBalance: 0,
       currentUser: {
-        userName: 'joe_shmo',
+        userName: 'joey_shmoey',
         memberSince: '07/23/96',
       },
       debits: [],
@@ -53,6 +53,8 @@ class App extends Component {
     this.setState({credits, debits, accountBalance})
   }
 
+
+
   mockLogIn = (logInInfo) => {
     const newUser = {...this.state.currentUser}
     newUser.userName = logInInfo.userName
@@ -77,7 +79,11 @@ class App extends Component {
       debits: [...this.state.debits, debit_obj]
     })
 
-    console.log(this.state.debits)
+    const newBalance = this.state.accountBalance -= amount;
+
+    this.setState({
+      accountBalance: newBalance
+    })
   }
 
   addCredit = (e) => {
@@ -96,6 +102,12 @@ class App extends Component {
 
     this.setState({
       credits: [...this.state.credits, credit_obj]
+    })
+
+    const newBalance = this.state.accountBalance += amount;
+
+    this.setState({
+      accountBalance: newBalance
     })
 
     console.log(this.state.credits)
